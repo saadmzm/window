@@ -17,7 +17,7 @@ impl ApplicationHandler for App {
     fn window_event(
             &mut self,
             event_loop: &ActiveEventLoop,
-            id: WindowId,
+            _id: WindowId,
             event: WindowEvent,
         ) {
         match event {
@@ -42,5 +42,5 @@ pub fn run() {
 
     let mut app = App::default();
     
-    event_loop.run_app(&mut app);
+    let _ = event_loop.run_app(&mut app);
 }
