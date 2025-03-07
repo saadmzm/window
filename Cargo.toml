@@ -4,6 +4,9 @@ version = "0.1.0"
 edition = "2024"
 authors = ["Saad Moazzam"]
 
+[lib]
+crate-type = ["cdylib","rlib"]
+
 [dependencies]
 winit = "0.30.9"
 
