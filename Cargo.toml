@@ -1,0 +1,11 @@
+[package]
+name = "window"
+version = "0.1.0"
+edition = "2024"
+authors = ["Saad Moazzam"]
+
+[dependencies]
+winit = "0.30.9"
+
+[profile.release]
+panic = "abort"
