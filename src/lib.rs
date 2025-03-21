@@ -2,7 +2,7 @@ use winit::{
     application::ApplicationHandler,
     event::WindowEvent,
     event_loop::{ActiveEventLoop, ControlFlow, EventLoop},
-    window::{Window, WindowId},
+    window::{Window, WindowAttributes, WindowId},
 };
 
 #[derive(Default)]
@@ -12,7 +12,13 @@ struct App {
 
 impl ApplicationHandler for App {
     fn resumed(&mut self, event_loop: &ActiveEventLoop) {
-        self.window = Some(event_loop.create_window(Window::default_attributes()).unwrap());
+        if self.window.is_none() {
+            let attr = WindowAttributes::default()
+                .with_title("My Window")
+                .with_resizable(true);
+            let window = event_loop.create_window(attr).expect("Failed to create window");
+            self.window = Some(window);
+        }
     }
     fn window_event(
             &mut self,
